@@ -1,19 +1,12 @@
 ---
-interface Props {
-  tituloInicio: string;
-  tituloMedio: string;
-  tituloFin: string;
-  parrafo: string;
-}
 
-const { tituloInicio, tituloMedio, tituloFin, parrafo } = Astro.props;
 ---
 
-<section class="text-center my-[4%]">
+<section class="text-center my-[4%] banner invisible">
   <h2 class="font-black text-[38px]"> 
-    <span class="text-azul_claro">{tituloInicio}</span> 
-    <span class="text-azul_oscuro"> {tituloMedio} </span> 
-    <span class="text-azul_claro">{tituloFin}</span> 
+    <span class="text-azul_claro">Transformando</span> 
+    <span class="text-azul_oscuro"> sonrisas, cuidando </span> 
+    <span class="text-azul_claro">vidas.</span> 
   </h2>
-  <p class="text-[24px]">{parrafo}</p>
+  <p class="text-[24px] parrafo invisible">Todos nuestros tratamientos y servicios se brindan en cómodas instalaciones con los más altos estándares de calidad.</p>
 </section>

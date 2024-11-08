@@ -5,6 +5,7 @@ interface Props {
 
 const { title } = Astro.props;
 import 'animate.css';
+import 'aos/dist/aos.css'
 ---
 
 <!doctype html>
@@ -21,7 +22,8 @@ import 'animate.css';
 	<body class="mx-[130px]">
 		<slot />
 		<script is:inline src="https://kit.fontawesome.com/db59255a97.js" crossorigin="anonymous"></script>
-		<script is:inline src="/js/main.js"></script>
+		<script is:inline src="/js/main.js" defer></script>
+		<script is:inline src="/js/animate.js" defer></script>
 	</body>
 </html>
 

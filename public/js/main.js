@@ -1,3 +1,4 @@
+
 let currentPage = 0;
 const totalCards = document.querySelectorAll('.card').length;
 const cardsPerPage = 4;
@@ -25,3 +26,5 @@ const currentYear = new Date().getFullYear();
     
     // Colocar el año actual en el elemento con id "year"
     document.getElementById('año').textContent = currentYear;
+
+ 

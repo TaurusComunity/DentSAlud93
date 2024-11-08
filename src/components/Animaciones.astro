@@ -1,0 +1,101 @@
+<script>
+  // Esperamos a que el DOM esté listo y luego configuramos el IntersectionObserver para aplicar animaciones
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+      const animationClasses = {
+        header: ['animate__animated', 'animate__fadeInDown'],
+        navItem: ['animate__animated', 'animate__fadeInDown'],
+        title: ['animate__animated', 'animate__fadeInLeft'],
+        title2: ['animate__animated', 'animate__fadeInRight'],
+        banner: ['animate__animated', 'animate__fadeInUp'],
+        servicios: ['animate__animated', 'animate__fadeInUp'],
+        carrousel: ['animate__animated', 'animate__fadeInUp'],
+      };
+
+      // Ocultar elementos inicialmente con la clase 'invisible'
+      document.querySelectorAll('.invisible').forEach(el => el.classList.add('invisible'));
+
+      // Función para aplicar la animación y hacer visible el elemento
+      const applyAnimation = (element, classes) => {
+        element.classList.remove('invisible');
+        classes.forEach(cls => element.classList.add(cls));
+      };
+
+      // Configurar el IntersectionObserver
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            const animClass = target.dataset.animClass;
+
+            if (animClass && animationClasses[animClass]) {
+              applyAnimation(target, animationClasses[animClass]);
+              observer.unobserve(target); // Dejar de observar el elemento después de animarlo
+            }
+          }
+        });
+      }, { threshold: 0.1 }); // Ajustar el umbral si necesitas que la animación se active antes o después
+
+      // Asignar datos y observar cada elemento
+      const elementsToAnimate = [
+        { selector: 'header', animClass: 'header' },
+        { selector: '.nav-item', animClass: 'navItem' },
+        { selector: '.title', animClass: 'title' },
+        { selector: '.title2', animClass: 'title2' },
+        { selector: '.banner', animClass: 'banner' },
+        { selector: '.servicios', animClass: 'servicios' },
+        { selector: '.carrousel', animClass: 'carrousel' },
+      ];
+
+      elementsToAnimate.forEach(item => {
+        document.querySelectorAll(item.selector).forEach((el, index) => {
+          el.dataset.animClass = item.animClass;
+          observer.observe(el);
+        });
+      });
+    });
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animaciones con Scroll</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    /* Ocultar elementos inicialmente hasta que se animen */
+    .invisible {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-4">
+  <!-- Elementos del contenido con clases para animaciones -->
+  <header class="bg-blue-600 text-white text-center p-6 rounded-lg mb-8 invisible">
+    <nav class="flex justify-center gap-8">
+      <a href="#inicio" class="nav-item text-lg invisible">Inicio</a>
+      <a href="#nosotros" class="nav-item text-lg invisible">Nosotros</a>
+      <a href="#contacto" class="nav-item text-lg invisible">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="flex justify-between">
+    <div class="title text-4xl font-bold text-center invisible">Título con Nosotros</div>
+    <div class="title2 text-4xl font-bold text-center invisible">Título con Nosotros</div>
+  </div>
+
+  <div class="banner invisible">
+    <!-- Contenido del banner aquí -->
+  </div>
+
+  <div class="servicios invisible">
+    <!-- Contenido de servicios aquí -->
+  </div>
+
+  <div class="carrousel invisible">
+    <!-- Contenido del carrousel aquí -->
+  </div>
+</body>
+</html>
