@@ -1,0 +1,19 @@
+---
+interface Props {
+  tituloInicio: string;
+  tituloMedio: string;
+  tituloFin: string;
+  parrafo: string;
+}
+
+const { tituloInicio, tituloMedio, tituloFin, parrafo } = Astro.props;
+---
+
+<section class="text-center my-[4%]">
+  <h2 class="font-black text-[38px]"> 
+    <span class="text-azul_claro">{tituloInicio}</span> 
+    <span class="text-azul_oscuro"> {tituloMedio} </span> 
+    <span class="text-azul_claro">{tituloFin}</span> 
+  </h2>
+  <p class="text-[24px]">{parrafo}</p>
+</section>
