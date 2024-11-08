@@ -19,3 +19,9 @@ function changePage(page) {
 
 // Inicializa el carrusel
 changePage(0);
+
+// Obtener el año actual
+const currentYear = new Date().getFullYear();
+    
+    // Colocar el año actual en el elemento con id "year"
+    document.getElementById('año').textContent = currentYear;
