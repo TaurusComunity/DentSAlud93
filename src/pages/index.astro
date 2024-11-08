@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header_index from "../components/Header_index.astro";
 import Banner from "../components/Banner.astro";
+import Carrousel from "../components/Carrousel.astro";
 ---
 
 <Layout title="DentSalud 93">
@@ -14,6 +15,16 @@ import Banner from "../components/Banner.astro";
 		tituloFin="vidas."
 		parrafo="Todos nuestros tratamientos y servicios se brindan en cómodas instalaciones con los más altos estándares de calidad."
 	  />
+    </main>
+
+	<main class="mt-[50px]">
+		<Banner
+		tituloInicio="Nuestros"
+		tituloMedio=""
+		tituloFin="Servicios"
+		parrafo="Encontrarás tratamientos especializados, ven y conocelos."
+	  />
+	  <Carrousel />
     </main>
   </section>
 </Layout>

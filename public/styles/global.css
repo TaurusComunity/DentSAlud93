@@ -2,11 +2,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Outfit:wght@100..900&display=swap');
 
+
+:root{
+      --azul_claro: #87A2FF;
+			--azul_rey: #0B2F9F;
+			--azul_oscuro: #0F1035;
+			--negro: #070F2B;
+			--blanco: #F5F5F5;
+}
 *{
   font-family: "Comfortaa", sans-serif;
 }
 
+/* Estilos adicionales */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 40px;
+}
+
+.card {
+  flex: 0 0 30.33%; /* Muestra 3 cartas por slide */
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.pagination button {
+  margin: 0 2px;
+  border-radius: 100%;
+  width: 16px;
+  height: 16px;
+  padding: 5px 10px;
+  background-color: var(--azul_claro);
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: var(--azul_oscuro);
+  color: var(--blanco);
+}
