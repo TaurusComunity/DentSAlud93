@@ -1,9 +1,7 @@
-/* src/styles/global.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Outfit:wght@100..900&display=swap');
-
 
 :root{
       --azul_claro: #87A2FF;
