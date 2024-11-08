@@ -28,7 +28,7 @@
 }
 
 .card {
-  flex: 0 0 30.33%; /* Muestra 3 cartas por slide */
+  flex: 0 0 25%; /* Muestra 3 cartas por slide */
 }
 
 .pagination {
