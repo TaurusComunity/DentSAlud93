@@ -11,6 +11,7 @@ if (typeof window !== 'undefined') {
       servicios: 400,
       parrafoSer: 500,
       carrousel: 500,
+      footer: 800,
     };
 
     // Función para aplicar animaciones
@@ -57,6 +58,8 @@ if (typeof window !== 'undefined') {
             animateElement(element, 'animate__fadeInUp');
           } else if (element.classList.contains('carrousel')) {
             animateElement(element, 'animate__fadeInUp');
+          } else if (element.classList.contains('footer')) {
+            animateElement(element, 'animate__fadeInUp');
           }
         } else {
           // Cuando el elemento ya no es visible, eliminamos la animación
@@ -66,7 +69,7 @@ if (typeof window !== 'undefined') {
     }, observerOptions);
 
     // Seleccionar los elementos y observarlos
-    const elementsToAnimate = document.querySelectorAll('header, .nav-item, .title, .title2, .banner, .parrafo, .servicios, .parrafoSer, .carrousel');
+    const elementsToAnimate = document.querySelectorAll('header, .nav-item, .title, .title2, .banner, .parrafo, .servicios, .parrafoSer, .carrousel, .footer');
 
     elementsToAnimate.forEach(element => {
       // Agregar clase invisible al inicio
