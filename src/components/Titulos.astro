@@ -1,0 +1,18 @@
+---
+
+interface Props {
+	titulos: string;
+}
+
+const { titulos } = Astro.props;
+
+---
+
+<section class="pb-[100px] pt-[30px] flex justify-center items-center">
+    <h1 class="title invisible font-black text-[120px] text-blanco">
+      <div class="flex -mb-[50px] items-center">
+       {titulos}
+      </div>
+    </h1>
+  </section>
+  
