@@ -50,3 +50,7 @@
   background-color: var(--azul_oscuro);
   color: var(--blanco);
 }
+
+.invisible {
+  visibility: hidden;
+}

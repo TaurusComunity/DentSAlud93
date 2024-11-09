@@ -1,85 +1,78 @@
-// Esperamos a que el DOM esté listo y luego aplicamos las animaciones en secuencia
+// Esperamos a que el DOM esté listo y luego aplicamos las animaciones al hacer scroll
 if (typeof window !== 'undefined') {
-    window.addEventListener('load', () => {
-      // Definir el tiempo de cada paso
-      const animationTimings = {
-        header: 800,
-        navItem: 100, 
-        title: 200,  
-        banner: 400,
-        parrafo: 500,
-        servicios: 400 ,
-        parrafoSer: 500 ,
-        carrousel: 500,
+  window.addEventListener('load', () => {
+    // Definir los tiempos de animación
+    const animationTimings = {
+      header: 800,
+      navItem: 100,
+      title: 200,
+      banner: 400,
+      parrafo: 500,
+      servicios: 400,
+      parrafoSer: 500,
+      carrousel: 500,
+    };
 
-      };
+    // Función para aplicar animaciones
+    const animateElement = (element, animationClass) => {
+      element.classList.add('animate__animated', animationClass);
+      element.classList.remove('invisible'); // Hacer visible el elemento cuando inicie la animación
+    };
 
-      // Animar el header
-      const header = document.querySelector('header');
-      header.classList.add('animate__animated', 'animate__fadeInDown');
-      header.classList.remove('invisible'); // Hacer visible cuando inicie la animación
+    // Función para remover animaciones
+    const removeAnimation = (element) => {
+      element.classList.remove('animate__animated', 'animate__fadeInDown', 'animate__fadeInUp', 'animate__fadeInLeft', 'animate__fadeInRight');
+      element.classList.add('invisible'); // Hacerlo invisible nuevamente cuando la animación se termine
+    };
 
-      // Animar navegacion
-      setTimeout(() => {
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        // Animar cada item del menú de navegación con un retraso
-        navItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.classList.add('animate__animated', 'animate__fadeInDown');
-            item.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-          }, index * animationTimings.navItem);
-        });
+    // Configuración del IntersectionObserver
+    const observerOptions = {
+      root: null, // Se usa el viewport como contenedor
+      rootMargin: '0px',
+      threshold: [0, 0.5], // Cuando el elemento entre o salga del 50% del viewport
+    };
 
-        // Animar titulo
-        setTimeout(() => {
-          const title = document.querySelector('.title');
-          title.classList.add('animate__animated', 'animate__fadeInLeft');
-          title.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-        }, navItems.length * animationTimings.navItem);
+    // Crear el IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const element = entry.target;
 
-        setTimeout(() => {
-          const title2 = document.querySelector('.title2');
-          title2.classList.add('animate__animated', 'animate__fadeInRight');
-          title2.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-        }, navItems.length * animationTimings.navItem + animationTimings.title);
+        if (entry.isIntersecting) {
+          // Cuando el elemento es visible en el viewport, aplicamos la animación
+          if (element.classList.contains('header')) {
+            animateElement(element, 'animate__fadeInDown');
+          } else if (element.classList.contains('nav-item')) {
+            animateElement(element, 'animate__fadeInDown');
+          } else if (element.classList.contains('title')) {
+            animateElement(element, 'animate__fadeInLeft');
+          } else if (element.classList.contains('title2')) {
+            animateElement(element, 'animate__fadeInRight');
+          } else if (element.classList.contains('banner')) {
+            animateElement(element, 'animate__fadeInUp');
+          } else if (element.classList.contains('parrafo')) {
+            animateElement(element, 'animate__fadeInUp');
+          } else if (element.classList.contains('servicios')) {
+            animateElement(element, 'animate__fadeInUp');
+          } else if (element.classList.contains('parrafoSer')) {
+            animateElement(element, 'animate__fadeInUp');
+          } else if (element.classList.contains('carrousel')) {
+            animateElement(element, 'animate__fadeInUp');
+          }
+        } else {
+          // Cuando el elemento ya no es visible, eliminamos la animación
+          removeAnimation(element);
+        }
+      });
+    }, observerOptions);
 
-        // Animar banner
-        setTimeout(() => {
-            const banner = document.querySelector('.banner');
-            banner.classList.add('animate__animated', 'animate__fadeInUp');
-            banner.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-          }, navItems.length * animationTimings.navItem + animationTimings.title);
+    // Seleccionar los elementos y observarlos
+    const elementsToAnimate = document.querySelectorAll('header, .nav-item, .title, .title2, .banner, .parrafo, .servicios, .parrafoSer, .carrousel');
 
-        // Animar parrafo
-        setTimeout(() => {
-          const parrafo = document.querySelector('.parrafo');
-          parrafo.classList.add('animate__animated', 'animate__fadeInUp');
-          parrafo.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-        }, navItems.length * animationTimings.navItem + animationTimings.title);
-
-        // Animar servicios
-        setTimeout(() => {
-          const servicios = document.querySelector('.servicios');
-          servicios.classList.add('animate__animated', 'animate__fadeInUp');
-          servicios.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-        }, navItems.length * animationTimings.navItem + animationTimings.title);
-
-      // Animar parrafo servicios
-      setTimeout(() => {
-        const parrafoSer = document.querySelector('.parrafoSer');
-        parrafoSer.classList.add('animate__animated', 'animate__fadeInUp');
-        parrafoSer.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-      }, navItems.length * animationTimings.navItem + animationTimings.title);
-
-        // Animar carrousel
-        setTimeout(() => {
-          const carrousel = document.querySelector('.carrousel');
-          carrousel.classList.add('animate__animated', 'animate__fadeInUp');
-          carrousel.classList.remove('invisible'); // Hacer visible cuando inicie la animación
-        }, navItems.length * animationTimings.navItem + animationTimings.title);
-
-      }, animationTimings.header);
+    elementsToAnimate.forEach(element => {
+      // Agregar clase invisible al inicio
+      element.classList.add('invisible');
+      // Observar el elemento
+      observer.observe(element);
     });
-  }
-  
+  });
+}
