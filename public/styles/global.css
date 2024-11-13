@@ -15,23 +15,54 @@
   scroll-behavior: smooth;
 }
 
-/* Estilos adicionales */
 .carousel-container {
   width: 100%;
   overflow: hidden;
-  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .carousel-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
   gap: 20px;
-  justify-content: start;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
-  flex: 0 0 100%; /* Predeterminado para pantallas pequeñas */
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 23.5%; /* Por defecto: 4 tarjetas por fila en pantallas grandes */
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.card-link a {
+  font-weight: 300;
+  font-size: 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-link a:hover {
+  color: var(--azul_claro);
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
 .pagination {
@@ -39,9 +70,9 @@
   margin-top: 20px;
 }
 
-.pagination button {
+.pagination-button {
   margin: 0 4px;
-  border-radius: 100%;
+  border-radius: 50%;
   width: 13px;
   height: 13px;
   background-color: var(--azul_claro);
@@ -49,7 +80,7 @@
   cursor: pointer;
 }
 
-.pagination button.active {
+.pagination-button.active {
   background-color: var(--azul_oscuro);
   color: var(--blanco);
 }
@@ -58,23 +89,36 @@
   visibility: hidden;
 }
 
-/* Medias queries para ajustes responsivos */
-@media (min-width: 576px) {
+.footer {
+  width: 100%;
+}
+
+.footer-nav {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-item {
+  text-align: center;
+  width: 100%;
+}
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 1200px) {
   .card {
-    flex: 0 0 25%; /* Muestra 2 cartas en pantallas pequeñas */
+    width: 30%; /* 3 tarjetas por fila en pantallas medianas */
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .card {
-    flex: 0 0 33.33%; /* Muestra 3 cartas en pantallas medianas */
+    width: 45%; /* 2 tarjetas por fila en pantallas pequeñas */
   }
+  
 }
 
-@media (min-width: 992px) {
+@media (max-width: 576px) {
   .card {
-    flex: 0 0 25%; /* Muestra 4 cartas en pantallas grandes */
+    width: 90%; /* 1 tarjeta por fila en pantallas extra pequeñas */
   }
 }
-
-/* financiacion */
