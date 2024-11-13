@@ -1,3 +1,9 @@
+ // Obtener el año actual
+ const currentYear = new Date().getFullYear();
+
+ // Colocar el año actual en el elemento con id "year"
+ document.getElementById("año").textContent = currentYear;
+ 
 let currentPage = 0;
 const totalCards = document.querySelectorAll('.card').length;
 const cardsPerPage = 2;
@@ -40,10 +46,5 @@ function changePage2(page) {
 
 changePage2(0);
 
-// Obtener el año actual
-const currentYear = new Date().getFullYear();
-    
-    // Colocar el año actual en el elemento con id "year"
-    document.getElementById('año').textContent = currentYear;
 
  

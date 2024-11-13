@@ -1,0 +1,43 @@
+---
+// Importamos las dependencias necesarias
+import Layout from "../layouts/Layout.astro";
+import Header_global from "../components/Header_global.astro";
+import Servicios from "../components/Servicios.astro";
+import Footer from "../components/Footer.astro";
+import { fetchDentalNews, type NewsItem } from '../../lib/fetchNews';
+
+// Obtenemos las noticias de la API
+const dentalNews: NewsItem[] = await fetchDentalNews();
+---
+
+<Layout title="Blog informativo">
+  <Header_global titulo="Blog" />
+  <section class="min-h-[100vh]">
+    <main class="mt-[50px]">
+      <Servicios
+        titulo_seccion="Como obtener una sonrisa empoderada"
+        parrafo_seccion="Estás muy cerca de conquistar el mundo con el poder de tu sonrisa. Contamos con las mejores alternativas para financiar tu tratamiento de forma segura y rápida."
+      />
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 px-4 mt-8">
+        {dentalNews.length > 0 ? (
+          dentalNews.map((news: NewsItem) => (
+            <article class="border rounded-lg shadow-lg overflow-hidden bg-white transition-transform transform hover:scale-105">
+              <img src={news.image} alt={news.title} class="h-48 w-full object-cover" />
+              <div class="p-4">
+                <h3 class="font-bold text-lg mb-2">{news.title}</h3>
+                <p class="text-gray-700 text-sm line-clamp-2">{news.description || "No hay descripción disponible."}</p>
+                <a href={news.url} target="_blank" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg text-center hover:bg-blue-600">
+                  Ver más
+                </a>
+              </div>
+            </article>
+          ))
+        ) : (
+          <p>No hay noticias disponibles en este momento.</p>
+        )}
+      </div>
+    </main>
+  </section>
+  <Footer />
+</Layout>

@@ -19,27 +19,28 @@
 .carousel-container {
   width: 100%;
   overflow: hidden;
+  padding: 20px 0;
 }
 
 .carousel-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 40px;
-  justify-content: space-around;
+  gap: 20px;
+  justify-content: start;
   align-items: center;
 }
 
 .card {
-  flex: 0 0 25%; /* Muestra 3 cartas por slide */
+  flex: 0 0 100%; /* Predeterminado para pantallas pequeñas */
 }
 
 .pagination {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .pagination button {
-  margin: 0 2px;
+  margin: 0 4px;
   border-radius: 100%;
   width: 13px;
   height: 13px;
@@ -55,6 +56,25 @@
 
 .invisible {
   visibility: hidden;
+}
+
+/* Medias queries para ajustes responsivos */
+@media (min-width: 576px) {
+  .card {
+    flex: 0 0 25%; /* Muestra 2 cartas en pantallas pequeñas */
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex: 0 0 33.33%; /* Muestra 3 cartas en pantallas medianas */
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    flex: 0 0 25%; /* Muestra 4 cartas en pantallas grandes */
+  }
 }
 
 /* financiacion */
