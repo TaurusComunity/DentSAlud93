@@ -25,6 +25,8 @@
   display: flex;
   transition: transform 0.5s ease-in-out;
   gap: 40px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .card {
@@ -54,3 +56,5 @@
 .invisible {
   visibility: hidden;
 }
+
+/* financiacion */

@@ -1,4 +1,3 @@
-
 let currentPage = 0;
 const totalCards = document.querySelectorAll('.card').length;
 const cardsPerPage = 2;
@@ -20,6 +19,26 @@ function changePage(page) {
 
 // Inicializa el carrusel
 changePage(0);
+
+// carrousel financiacion
+// Carrusel 2
+let currentPage2 = 0;
+const totalCards2 = document.querySelectorAll('.carousel2 .card').length;
+const cardsPerPage2 = 8;
+const carouselWrapper2 = document.querySelector('.carousel2 .carousel-wrapper');
+const paginationButtons2 = document.querySelectorAll('.carousel2 .pagination-button');
+
+function changePage2(page) {
+  currentPage2 = page;
+  const offset2 = page * cardsPerPage2;
+
+  carouselWrapper2.style.transform = `translateX(-${(offset2 * 100) / totalCards2}%)`;
+
+  paginationButtons2.forEach(button => button.classList.remove('active'));
+  paginationButtons2[page].classList.add('active');
+}
+
+changePage2(0);
 
 // Obtener el año actual
 const currentYear = new Date().getFullYear();
