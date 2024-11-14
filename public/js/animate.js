@@ -1,45 +1,28 @@
-// Esperamos a que el DOM esté listo y luego aplicamos las animaciones al hacer scroll
 if (typeof window !== 'undefined') {
   window.addEventListener('load', () => {
-    // Definir los tiempos de animación
-    const animationTimings = {
-      header: 800,
-      navItem: 100,
-      title: 200,
-      banner: 400,
-      parrafo: 500,
-      servicios: 400,
-      parrafoSer: 500,
-      carrousel: 500,
-      footer: 800,
-    };
+    let previousScrollPosition = window.scrollY;
 
-    // Función para aplicar animaciones
+    // Función para aplicar animación
     const animateElement = (element, animationClass) => {
       element.classList.add('animate__animated', animationClass);
-      element.classList.remove('invisible'); // Hacer visible el elemento cuando inicie la animación
+      element.classList.remove('invisible');
     };
 
-    // Función para remover animaciones
-    const removeAnimation = (element) => {
-      element.classList.remove('animate__animated', 'animate__fadeInDown', 'animate__fadeInUp', 'animate__fadeInLeft', 'animate__fadeInRight');
-      element.classList.add('invisible'); // Hacerlo invisible nuevamente cuando la animación se termine
-    };
-
-    // Configuración del IntersectionObserver
+    // Opciones del IntersectionObserver
     const observerOptions = {
-      root: null, // Se usa el viewport como contenedor
+      root: null,
       rootMargin: '0px',
-      threshold: [0, 0.5], // Cuando el elemento entre o salga del 50% del viewport
+      threshold: 0.8
     };
 
-    // Crear el IntersectionObserver
+    // Crear IntersectionObserver
     const observer = new IntersectionObserver((entries) => {
+      const currentScrollPosition = window.scrollY;
+
       entries.forEach(entry => {
         const element = entry.target;
 
-        if (entry.isIntersecting) {
-          // Cuando el elemento es visible en el viewport, aplicamos la animación
+        if (entry.isIntersecting && currentScrollPosition > previousScrollPosition) {
           if (element.classList.contains('header')) {
             animateElement(element, 'animate__fadeInDown');
           } else if (element.classList.contains('nav-item')) {
@@ -61,21 +44,44 @@ if (typeof window !== 'undefined') {
           } else if (element.classList.contains('footer')) {
             animateElement(element, 'animate__fadeInUp');
           }
-        } else {
-          // Cuando el elemento ya no es visible, eliminamos la animación
-          removeAnimation(element);
         }
       });
+
+      previousScrollPosition = currentScrollPosition;
     }, observerOptions);
 
-    // Seleccionar los elementos y observarlos
-    const elementsToAnimate = document.querySelectorAll('header, .nav-item, .title, .title2, .banner, .parrafo, .servicios, .parrafoSer, .carrousel, .footer');
-
+    // Seleccionar los elementos y aplicar clase invisible
+    const elementsToAnimate = document.querySelectorAll('.header, .nav-item, .title, .title2, .banner, .parrafo, .servicios, .parrafoSer, .carrousel, .footer');
     elementsToAnimate.forEach(element => {
-      // Agregar clase invisible al inicio
       element.classList.add('invisible');
-      // Observar el elemento
-      observer.observe(element);
+
+      // Revisar si el elemento está visible en el inicio y animarlo si es necesario
+      if (element.getBoundingClientRect().top < window.innerHeight) {
+        if (element.classList.contains('header')) {
+          animateElement(element, 'animate__fadeInDown');
+        } else if (element.classList.contains('nav-item')) {
+          animateElement(element, 'animate__fadeInDown');
+        } else if (element.classList.contains('title')) {
+          animateElement(element, 'animate__fadeInLeft');
+        } else if (element.classList.contains('title2')) {
+          animateElement(element, 'animate__fadeInRight');
+        } else if (element.classList.contains('banner')) {
+          animateElement(element, 'animate__fadeInUp');
+        } else if (element.classList.contains('parrafo')) {
+          animateElement(element, 'animate__fadeInUp');
+        } else if (element.classList.contains('servicios')) {
+          animateElement(element, 'animate__fadeInUp');
+        } else if (element.classList.contains('parrafoSer')) {
+          animateElement(element, 'animate__fadeInUp');
+        } else if (element.classList.contains('carrousel')) {
+          animateElement(element, 'animate__fadeInUp');
+        } else if (element.classList.contains('footer')) {
+          animateElement(element, 'animate__fadeInUp');
+        }
+      } else {
+        // Observar el elemento solo si no es visible al inicio
+        observer.observe(element);
+      }
     });
   });
 }
