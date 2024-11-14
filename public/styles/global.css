@@ -18,61 +18,28 @@
 .carousel-container {
   width: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .carousel-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 40px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .card {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 23.5%; /* Por defecto: 4 tarjetas por fila en pantallas grandes */
-}
-
-.card-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.card-title {
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 15px;
-}
-
-.card-link a {
-  font-weight: 300;
-  font-size: 16px;
-  color: inherit;
-  text-decoration: none;
-}
-
-.card-link a:hover {
-  color: var(--azul_claro);
-  font-weight: bold;
-  transition: all 0.3s;
+  flex: 0 0 25%; /* Muestra 3 cartas por slide */
 }
 
 .pagination {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
-.pagination-button {
-  margin: 0 4px;
-  border-radius: 50%;
+.pagination button {
+  margin: 0 2px;
+  border-radius: 100%;
   width: 13px;
   height: 13px;
   background-color: var(--azul_claro);
@@ -80,27 +47,13 @@
   cursor: pointer;
 }
 
-.pagination-button.active {
+.pagination button.active {
   background-color: var(--azul_oscuro);
   color: var(--blanco);
 }
 
 .invisible {
   visibility: hidden;
-}
-
-.footer {
-  width: 100%;
-}
-
-.footer-nav {
-  flex-direction: column;
-  gap: 15px;
-}
-
-.nav-item {
-  text-align: center;
-  width: 100%;
 }
 
 /* Media Queries para diseño responsivo */
