@@ -45,16 +45,24 @@ import Footer from "../components/footer/Footer.astro";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const button = document.getElementById("redirectButton");
-     if(button){
-       button.addEventListener("click", () => {
-         // Cambia la URL aquí
-         window.location.href = "https://wa.link/utb6ha";
-       });
-     }else{
-      console.error("El elemento button no se encontró en el DOM.");
+    // Selecciona todos los botones con la clase "redirect-button"
+const buttons = document.querySelectorAll(".redirect-button");
 
-     }
+if (buttons.length > 0) {
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Obtén la URL desde un atributo personalizado, como data-url
+      const url = button.getAttribute("data-url");
+      if (url) {
+        window.location.href = url; // Redirige a la URL especificada
+      } else {
+        console.error("El botón no tiene definida una URL en data-url.");
+      }
+    });
+  });
+} else {
+  console.error("No se encontraron botones con la clase 'redirect-button'.");
+}
 
     const toggleDiv = document.getElementById("toggleDiv");
     const toggleText = document.getElementById("toggleText");
