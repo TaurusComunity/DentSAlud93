@@ -1,28 +1,116 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header_index from "../components/Header_index.astro";
-import Banner from "../components/Banner.astro";
-import Servicios from "../components/Servicios.astro";
-import Carrousel from "../components/Carrousel.astro";
-import Footer from "../components/Footer.astro";
-
+import Header from "../components/header/Header.astro";
+import Carrousel from "../components/carrouseles/Carrousel.astro"
+import Contacto from "../components/contacto/Contacto.astro";
+import Footer from "../components/footer/Footer.astro";
 ---
 
 <Layout title="DentSalud 93">
-  <Header_index />
-  <section class="min-h-[100vh]">
-    <main>
-      <Banner />
+  <Header />
+  
+  <section class="title flex justify-center items-center my-[40px] lg:my-[80px]">
+    <main class="bg-primario flex items-center gap-5 px-[20px] py-[10px] rounded-[8px]">
+        <div class="w-[50px] h-[50px] rounded-xl bg-secundario2 bg-opacity-50">
+            <img src="/diente.png" alt="" class="w-[50px] h-[50px]">
+        </div>
+        <h3 class="lg:text-[32px] text-[18px] text-blanco">Nuestros Servicios</h3>
     </main>
+</section>
+<div class="title2 my-[20px] text-center lg:text-[24px] text-[20px]">
+<p>Encontraras tratamientos especializados, ven y conocelos.</p>
+</div>
 
-    <main class="mt-[50px]">
-      <Servicios 
-       titulo_seccion="Nuestros servicios",
-      parrafo_seccion="Encontraras tratamientos especializados, ven y concelos."
-      />
-      <Carrousel />
-    </main>
-  </section>
-  <Footer />
+<Carrousel />
+
+<section class="title flex justify-center items-center my-[40px] lg:my-[80px]">
+  <main class="bg-primario flex items-center gap-5 px-[20px] py-[10px] rounded-[8px]">
+      <div class="w-[50px] h-[50px] rounded-xl bg-secundario2 bg-opacity-50">
+          <img src="/diente.png" alt="" class="w-[50px] h-[50px]">
+      </div>
+      <h3 class="lg:text-[32px] text-[18px] text-blanco">Contacta con nosotros</h3>
+  </main>
+</section>
+<div class="title2 my-[20px] text-center lg:text-[24px] text-[20px]">
+<p>¡Estamos aquí para ti! ¿Tienes preguntas? ¿Necesitas una consulta rápida? No dudes en comunicarte con nosotros. Tu sonrisa es nuestra prioridad y estamos listos para ayudarte a conseguir la mejor versión de ti mismo.</p>
+</div>
+
+<Contacto />
+<Footer />
+
+
+
 </Layout>
 
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("redirectButton");
+     if(button){
+       button.addEventListener("click", () => {
+         // Cambia la URL aquí
+         window.location.href = "https://wa.link/utb6ha";
+       });
+     }else{
+      console.error("El elemento button no se encontró en el DOM.");
+
+     }
+
+    const toggleDiv = document.getElementById("toggleDiv");
+    const toggleText = document.getElementById("toggleText");
+
+    if (toggleDiv && toggleText) {
+      toggleDiv.addEventListener("click", () => {
+        toggleText.classList.toggle("hidden"); // Alterna entre mostrar y ocultar
+      });
+    } else {
+      console.error("El elemento no se encontró en el DOM.");
+    }
+    // Obtener el año actual y actualizar el elemento con id "año"
+    const yearElement = document.getElementById("año");
+    if (yearElement) {
+      const currentYear = new Date().getFullYear();
+      yearElement.textContent = currentYear.toString();
+    } else {
+      console.error('Elemento con id "año" no encontrado.');
+    }
+
+    
+
+    // Carrusel 2
+    let currentPage2 = 0;
+    const cards2 = document.querySelectorAll(".carousel2 .card");
+    const totalCards2 = cards2.length;
+    const cardsPerPage2 = 8;
+    const carouselWrapper2 = document.querySelector(
+      ".carousel2 .carousel-wrapper"
+    ) as HTMLElement | null;
+    const paginationButtons2 = document.querySelectorAll(
+      ".carousel2 .pagination-button"
+    );
+
+    function changePage2(page: number) {
+      if (carouselWrapper2 && paginationButtons2.length > 0) {
+        currentPage2 = page;
+        const offset2 = page * cardsPerPage2;
+
+        // Mueve el carrusel
+        carouselWrapper2.style.transform = `translateX(-${(offset2 * 100) / totalCards2}%)`;
+
+        // Actualiza paginación activa
+        paginationButtons2.forEach((button) =>
+          button.classList.remove("active")
+        );
+        if (paginationButtons2[page]) {
+          paginationButtons2[page].classList.add("active");
+        }
+      }
+    }
+
+    if (carouselWrapper2) {
+      changePage2(0);
+    } else {
+      console.error('Elemento ".carousel2 .carousel-wrapper" no encontrado.');
+    }
+  });
+</script>

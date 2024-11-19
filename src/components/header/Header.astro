@@ -1,0 +1,36 @@
+---
+import Logo from "./Logo.astro";
+import Navegacion from "./Navegacion.astro";
+import BtnContacto from "./btn-contacto.astro";
+import Banner from "../banner/Banner.astro";
+import Desplegable from "./Desplegable.astro";
+
+---
+
+<header
+  class="header w-full
+  min-h-[90vh]
+  bg-gradient-to-b
+from-secundario2
+via-secundario to-primario
+  py-[20px]
+  rounded-b-[20px]
+  lg:rounded-b-[50px]
+  px-[10px]
+  gap-3
+  lg:p-[60px]"
+>
+  <div class="w-full
+  flex
+  justify-evenly
+  lg:justify-between
+  items-center p-0">
+    <Logo />
+    <Navegacion />
+    <BtnContacto />
+  </div>
+
+  <Banner />
+  <Desplegable />
+
+</header>
