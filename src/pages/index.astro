@@ -17,7 +17,7 @@ import Footer from "../components/footer/Footer.astro";
         <h3 class="lg:text-[32px] text-[18px] text-blanco">Nuestros Servicios</h3>
     </main>
 </section>
-<div class="title2 my-[20px] text-center lg:text-[24px] text-[20px]">
+<div class="parrafo my-[20px] text-center lg:text-[24px] text-[20px]">
 <p>Encontraras tratamientos especializados, ven y conocelos.</p>
 </div>
 
@@ -31,7 +31,7 @@ import Footer from "../components/footer/Footer.astro";
       <h3 class="lg:text-[32px] text-[18px] text-blanco">Contacta con nosotros</h3>
   </main>
 </section>
-<div class="title2 my-[20px] text-center lg:text-[24px] text-[20px]">
+<div class="parrafo my-[20px] text-center lg:text-[24px] text-[20px]">
 <p>¡Estamos aquí para ti! ¿Tienes preguntas? ¿Necesitas una consulta rápida? No dudes en comunicarte con nosotros. Tu sonrisa es nuestra prioridad y estamos listos para ayudarte a conseguir la mejor versión de ti mismo.</p>
 </div>
 
@@ -45,25 +45,7 @@ import Footer from "../components/footer/Footer.astro";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Selecciona todos los botones con la clase "redirect-button"
-const buttons = document.querySelectorAll(".redirect-button");
-
-if (buttons.length > 0) {
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      // Obtén la URL desde un atributo personalizado, como data-url
-      const url = button.getAttribute("data-url");
-      if (url) {
-        window.location.href = url; // Redirige a la URL especificada
-      } else {
-        console.error("El botón no tiene definida una URL en data-url.");
-      }
-    });
-  });
-} else {
-  console.error("No se encontraron botones con la clase 'redirect-button'.");
-}
-
+    
     const toggleDiv = document.getElementById("toggleDiv");
     const toggleText = document.getElementById("toggleText");
 

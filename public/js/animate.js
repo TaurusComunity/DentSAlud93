@@ -28,7 +28,7 @@ if (typeof window !== 'undefined') {
           } else if (element.classList.contains('nav-item')) {
             animateElement(element, 'animate__fadeInDown');
           } else if (element.classList.contains('title')) {
-            animateElement(element, 'animate__fadeInLeft');
+            animateElement(element, 'animate__fadeInDown');
           } else if (element.classList.contains('title2')) {
             animateElement(element, 'animate__fadeInRight');
           } else if (element.classList.contains('banner')) {
@@ -62,9 +62,9 @@ if (typeof window !== 'undefined') {
         } else if (element.classList.contains('nav-item')) {
           animateElement(element, 'animate__fadeInDown');
         } else if (element.classList.contains('title')) {
-          animateElement(element, 'animate__fadeInLeft');
+          animateElement(element, 'animate__fadeInDown');
         } else if (element.classList.contains('title2')) {
-          animateElement(element, 'animate__fadeInRight');
+          animateElement(element, 'animate__fadeInDown');
         } else if (element.classList.contains('banner')) {
           animateElement(element, 'animate__fadeInUp');
         } else if (element.classList.contains('parrafo')) {
